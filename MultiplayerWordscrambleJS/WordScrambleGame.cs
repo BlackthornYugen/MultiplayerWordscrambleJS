@@ -13,16 +13,16 @@ namespace MultiplayerWordscrambleJS
         // the maximum number of players allowed playing simultaneously
         private const int MAX_PLAYERS = 5;
         // the user hosting the game. If it’s null nobody is hosting the game.
-        private static string userHostingTheGame = null;
+        private static string _userHostingTheGame = null;
         // the Word object that contains the scrambled and unscrambled words
-        private static Word gameWords;
+        private static Word _gameWords;
         // the list of players playing the game
-        private static List<string> activePlayers = new List<string>();
+        private static List<string> _activePlayers = new List<string>();
 
         [OperationBehavior]
         public bool IsGameBeingHosted()
         {
-            return userHostingTheGame != null;
+            return _userHostingTheGame != null;
         }
 
         [OperationBehavior]
@@ -30,24 +30,67 @@ namespace MultiplayerWordscrambleJS
         {
             if (IsGameBeingHosted())
             {
-                throw new Exception();
+                throw new FaultException<GameBeingHostedFault>(
+                    new GameBeingHostedFault { HostPlayer = _userHostingTheGame });
             }
 
-            return ScrambleWord(wordToScramble);
+            // TODO: use host address maybe? 
+
+            _userHostingTheGame = playerName;
+            _gameWords = new Word { UnscrambledWord = wordToScramble.Trim(), ScrambledWord = ScrambleWord(wordToScramble) };
+            return _gameWords.ScrambledWord;
         }
 
         [OperationBehavior]
         public Word Join(string playerName)
         {
-            // TO BE COMPLETED BY YOU: Add exception and program logic
-            throw new NotImplementedException();
+            if (_activePlayers.Count >= MAX_PLAYERS)
+            {
+                throw new FaultException<MaximumNumberOfPlayersReachedFault>(
+                    new MaximumNumberOfPlayersReachedFault { Capacity = MAX_PLAYERS });
+            }
+
+            if (_activePlayers.Contains(playerName))
+            {
+                throw new FaultException<PlayerNotPlayingTheGameFault>(
+                    new PlayerNotPlayingTheGameFault());
+            }
+
+            if (_userHostingTheGame == playerName)
+            {
+                throw new FaultException<HostCannotJoinTheGameFault>(
+                    new HostCannotJoinTheGameFault());
+            }
+
+            return new Word { ScrambledWord = _gameWords.ScrambledWord };
         }
 
         [OperationBehavior]
-        public bool GuessWord(string playerName, string guessedWord, string unscrambledWord)
+        public bool GuessWord(string playerName, Word gameWords)
         {
-            // TO BE COMPLETED BY YOU: Add exception and program logic
-            throw new NotImplementedException();
+            bool victorious = false;
+
+            if (IsGameBeingHosted())
+            {
+                throw new FaultException<GameIsNotBeingHostedFault>(new GameIsNotBeingHostedFault());
+            }
+
+            if (gameWords.ScrambledWord != _gameWords.ScrambledWord)
+            {
+                throw new FaultException<WordMismatchFault>(new WordMismatchFault());
+            }
+
+            if (gameWords.UnscrambledWord == _gameWords.UnscrambledWord)
+            {
+                victorious = true;
+            }
+
+            if (!_activePlayers.Contains(playerName))
+            {
+                throw new FaultException<PlayerNotPlayingTheGameFault>(new PlayerNotPlayingTheGameFault());
+            }
+
+            return victorious;
         }
 
         // Utility function to scramble a word
@@ -65,5 +108,4 @@ namespace MultiplayerWordscrambleJS
             return new string(chars);
         }
     }
-
 }

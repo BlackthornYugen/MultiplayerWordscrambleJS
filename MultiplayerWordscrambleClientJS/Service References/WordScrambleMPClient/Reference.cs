@@ -15,6 +15,51 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.MaximumNumberOfPlayersReachedFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameBeingHostedFault))]
+    public partial class GameFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MaximumNumberOfPlayersReachedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class MaximumNumberOfPlayersReachedFault : MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameFault {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class GameBeingHostedFault : MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameFault {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Word", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
     [System.SerializableAttribute()]
     public partial class Word : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -23,10 +68,10 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string scrambledWordField;
+        private string ScrambledWordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string unscrambledWordField;
+        private string UnscrambledWordField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +84,27 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string scrambledWord {
+        public string ScrambledWord {
             get {
-                return this.scrambledWordField;
+                return this.ScrambledWordField;
             }
             set {
-                if ((object.ReferenceEquals(this.scrambledWordField, value) != true)) {
-                    this.scrambledWordField = value;
-                    this.RaisePropertyChanged("scrambledWord");
+                if ((object.ReferenceEquals(this.ScrambledWordField, value) != true)) {
+                    this.ScrambledWordField = value;
+                    this.RaisePropertyChanged("ScrambledWord");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string unscrambledWord {
+        public string UnscrambledWord {
             get {
-                return this.unscrambledWordField;
+                return this.UnscrambledWordField;
             }
             set {
-                if ((object.ReferenceEquals(this.unscrambledWordField, value) != true)) {
-                    this.unscrambledWordField = value;
-                    this.RaisePropertyChanged("unscrambledWord");
+                if ((object.ReferenceEquals(this.UnscrambledWordField, value) != true)) {
+                    this.UnscrambledWordField = value;
+                    this.RaisePropertyChanged("UnscrambledWord");
                 }
             }
         }
@@ -78,29 +123,31 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WordScrambleMPClient.IWordScrambleGame")]
     public interface IWordScrambleGame {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/isGameBeingHosted", ReplyAction="http://tempuri.org/IWordScrambleGame/isGameBeingHostedResponse")]
-        bool isGameBeingHosted();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/IsGameBeingHosted", ReplyAction="http://tempuri.org/IWordScrambleGame/IsGameBeingHostedResponse")]
+        bool IsGameBeingHosted();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/isGameBeingHosted", ReplyAction="http://tempuri.org/IWordScrambleGame/isGameBeingHostedResponse")]
-        System.Threading.Tasks.Task<bool> isGameBeingHostedAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/IsGameBeingHosted", ReplyAction="http://tempuri.org/IWordScrambleGame/IsGameBeingHostedResponse")]
+        System.Threading.Tasks.Task<bool> IsGameBeingHostedAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/hostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/hostGameResponse")]
-        string hostGame(string playerName, string hostAddress, string wordToScramble);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/HostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/HostGameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameBeingHostedFault), Action="http://tempuri.org/IWordScrambleGame/HostGameGameBeingHostedFaultFault", Name="GameBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+        string HostGame(string playerName, string hostAddress, string wordToScramble);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/hostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/hostGameResponse")]
-        System.Threading.Tasks.Task<string> hostGameAsync(string playerName, string hostAddress, string wordToScramble);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/HostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/HostGameResponse")]
+        System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string hostAddress, string wordToScramble);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/join", ReplyAction="http://tempuri.org/IWordScrambleGame/joinResponse")]
-        MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word join(string playerName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/Join", ReplyAction="http://tempuri.org/IWordScrambleGame/JoinResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.MaximumNumberOfPlayersReachedFault), Action="http://tempuri.org/IWordScrambleGame/JoinMaximumNumberOfPlayersReachedFaultFault", Name="MaximumNumberOfPlayersReachedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+        MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word Join(string playerName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/join", ReplyAction="http://tempuri.org/IWordScrambleGame/joinResponse")]
-        System.Threading.Tasks.Task<MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word> joinAsync(string playerName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/Join", ReplyAction="http://tempuri.org/IWordScrambleGame/JoinResponse")]
+        System.Threading.Tasks.Task<MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word> JoinAsync(string playerName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/guessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/guessWordResponse")]
-        bool guessWord(string playerName, string guessedWord, string unscrambledWord);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/GuessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/GuessWordResponse")]
+        bool GuessWord(string playerName, MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word gameWords);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/guessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/guessWordResponse")]
-        System.Threading.Tasks.Task<bool> guessWordAsync(string playerName, string guessedWord, string unscrambledWord);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/GuessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/GuessWordResponse")]
+        System.Threading.Tasks.Task<bool> GuessWordAsync(string playerName, MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word gameWords);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -130,36 +177,36 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
                 base(binding, remoteAddress) {
         }
         
-        public bool isGameBeingHosted() {
-            return base.Channel.isGameBeingHosted();
+        public bool IsGameBeingHosted() {
+            return base.Channel.IsGameBeingHosted();
         }
         
-        public System.Threading.Tasks.Task<bool> isGameBeingHostedAsync() {
-            return base.Channel.isGameBeingHostedAsync();
+        public System.Threading.Tasks.Task<bool> IsGameBeingHostedAsync() {
+            return base.Channel.IsGameBeingHostedAsync();
         }
         
-        public string hostGame(string playerName, string hostAddress, string wordToScramble) {
-            return base.Channel.hostGame(playerName, hostAddress, wordToScramble);
+        public string HostGame(string playerName, string hostAddress, string wordToScramble) {
+            return base.Channel.HostGame(playerName, hostAddress, wordToScramble);
         }
         
-        public System.Threading.Tasks.Task<string> hostGameAsync(string playerName, string hostAddress, string wordToScramble) {
-            return base.Channel.hostGameAsync(playerName, hostAddress, wordToScramble);
+        public System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string hostAddress, string wordToScramble) {
+            return base.Channel.HostGameAsync(playerName, hostAddress, wordToScramble);
         }
         
-        public MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word join(string playerName) {
-            return base.Channel.join(playerName);
+        public MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word Join(string playerName) {
+            return base.Channel.Join(playerName);
         }
         
-        public System.Threading.Tasks.Task<MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word> joinAsync(string playerName) {
-            return base.Channel.joinAsync(playerName);
+        public System.Threading.Tasks.Task<MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word> JoinAsync(string playerName) {
+            return base.Channel.JoinAsync(playerName);
         }
         
-        public bool guessWord(string playerName, string guessedWord, string unscrambledWord) {
-            return base.Channel.guessWord(playerName, guessedWord, unscrambledWord);
+        public bool GuessWord(string playerName, MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word gameWords) {
+            return base.Channel.GuessWord(playerName, gameWords);
         }
         
-        public System.Threading.Tasks.Task<bool> guessWordAsync(string playerName, string guessedWord, string unscrambledWord) {
-            return base.Channel.guessWordAsync(playerName, guessedWord, unscrambledWord);
+        public System.Threading.Tasks.Task<bool> GuessWordAsync(string playerName, MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word gameWords) {
+            return base.Channel.GuessWordAsync(playerName, gameWords);
         }
     }
 }

@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" />
-  <xs:element name="isGameBeingHosted">
+  <xs:element name="IsGameBeingHosted">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="isGameBeingHostedResponse">
+  <xs:element name="IsGameBeingHostedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="isGameBeingHostedResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IsGameBeingHostedResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="hostGame">
+  <xs:element name="HostGame">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
@@ -22,40 +22,39 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="hostGameResponse">
+  <xs:element name="HostGameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="hostGameResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="HostGameResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="join">
+  <xs:element name="Join">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="joinResponse">
+  <xs:element name="JoinResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" minOccurs="0" name="joinResult" nillable="true" type="q1:Word" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" minOccurs="0" name="JoinResult" nillable="true" type="q1:Word" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="guessWord">
+  <xs:element name="GuessWord">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="guessedWord" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="unscrambledWord" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" minOccurs="0" name="gameWords" nillable="true" type="q2:Word" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="guessWordResponse">
+  <xs:element name="GuessWordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="guessWordResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="GuessWordResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -1,10 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GameBeingHostedFault">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GameFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GameBeingHostedFault" nillable="true" type="tns:GameBeingHostedFault" />
+  <xs:complexType name="GameFault">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GameFault" nillable="true" type="tns:GameFault" />
   <xs:complexType name="Word">
     <xs:sequence>
-      <xs:element minOccurs="0" name="scrambledWord" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="unscrambledWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScrambledWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnscrambledWord" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Word" nillable="true" type="tns:Word" />
+  <xs:complexType name="MaximumNumberOfPlayersReachedFault">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GameFault">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MaximumNumberOfPlayersReachedFault" nillable="true" type="tns:MaximumNumberOfPlayersReachedFault" />
 </xs:schema>
