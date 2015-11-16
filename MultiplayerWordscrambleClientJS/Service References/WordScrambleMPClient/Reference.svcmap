@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7be5ca59-c0d0-48de-bb46-7bd83730e73a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/MultiplayerWordscrambleJS/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b4187373-6259-4e58-af36-6b6ccf7a6e4a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MultiplayerWordscrambleJS/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="943670cb-5205-4e5e-8deb-95c373e2095f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MultiplayerWordscrambleJS/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c6085ceb-86bc-4282-a855-68bdf8101cc5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MultiplayerWordscrambleJS/Service1/mex" />
+    <MetadataFile FileName="MultiplayerWordscrambleJS.xsd" MetadataType="Schema" ID="a111a32f-f8f1-4a89-8f32-48c79ba644ca" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MultiplayerWordscrambleJS/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
