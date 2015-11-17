@@ -15,14 +15,18 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.MaximumNumberOfPlayersReachedFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameBeingHostedFault))]
-    public partial class GameFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GameBeingHostedFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HostPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -34,6 +38,32 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HostPlayer {
+            get {
+                return this.HostPlayerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HostPlayerField, value) != true)) {
+                    this.HostPlayerField = value;
+                    this.RaisePropertyChanged("HostPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -42,20 +72,6 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MaximumNumberOfPlayersReachedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
-    [System.SerializableAttribute()]
-    public partial class MaximumNumberOfPlayersReachedFault : MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameFault {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
-    [System.SerializableAttribute()]
-    public partial class GameBeingHostedFault : MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameFault {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -119,6 +135,324 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HostCannotJoinTheGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class HostCannotJoinTheGameFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameIsNotBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class GameIsNotBeingHostedFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MaximumNumberOfPlayersReachedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class MaximumNumberOfPlayersReachedFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CapacityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Capacity {
+            get {
+                return this.CapacityField;
+            }
+            set {
+                if ((this.CapacityField.Equals(value) != true)) {
+                    this.CapacityField = value;
+                    this.RaisePropertyChanged("Capacity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerAlreadyInGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class PlayerAlreadyInGameFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerNotPlayingTheGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class PlayerNotPlayingTheGameFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WordMismatchFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+    [System.SerializableAttribute()]
+    public partial class WordMismatchFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClientScrambledField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ServerScrambledField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ClientScrambled {
+            get {
+                return this.ClientScrambledField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClientScrambledField, value) != true)) {
+                    this.ClientScrambledField = value;
+                    this.RaisePropertyChanged("ClientScrambled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ServerScrambled {
+            get {
+                return this.ServerScrambledField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServerScrambledField, value) != true)) {
+                    this.ServerScrambledField = value;
+                    this.RaisePropertyChanged("ServerScrambled");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WordScrambleMPClient.IWordScrambleGame")]
     public interface IWordScrambleGame {
@@ -131,19 +465,24 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/HostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/HostGameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameBeingHostedFault), Action="http://tempuri.org/IWordScrambleGame/HostGameGameBeingHostedFaultFault", Name="GameBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
-        string HostGame(string playerName, string hostAddress, string wordToScramble);
+        string HostGame(string playerName, string wordToScramble);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/HostGame", ReplyAction="http://tempuri.org/IWordScrambleGame/HostGameResponse")]
-        System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string hostAddress, string wordToScramble);
+        System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string wordToScramble);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/Join", ReplyAction="http://tempuri.org/IWordScrambleGame/JoinResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.HostCannotJoinTheGameFault), Action="http://tempuri.org/IWordScrambleGame/JoinHostCannotJoinTheGameFaultFault", Name="HostCannotJoinTheGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.GameIsNotBeingHostedFault), Action="http://tempuri.org/IWordScrambleGame/JoinGameIsNotBeingHostedFaultFault", Name="GameIsNotBeingHostedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
         [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.MaximumNumberOfPlayersReachedFault), Action="http://tempuri.org/IWordScrambleGame/JoinMaximumNumberOfPlayersReachedFaultFault", Name="MaximumNumberOfPlayersReachedFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.PlayerAlreadyInGameFault), Action="http://tempuri.org/IWordScrambleGame/JoinPlayerAlreadyInGameFaultFault", Name="PlayerAlreadyInGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
         MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word Join(string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/Join", ReplyAction="http://tempuri.org/IWordScrambleGame/JoinResponse")]
         System.Threading.Tasks.Task<MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word> JoinAsync(string playerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/GuessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/GuessWordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.PlayerNotPlayingTheGameFault), Action="http://tempuri.org/IWordScrambleGame/GuessWordPlayerNotPlayingTheGameFaultFault", Name="PlayerNotPlayingTheGameFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplayerWordscrambleClientJS.WordScrambleMPClient.WordMismatchFault), Action="http://tempuri.org/IWordScrambleGame/GuessWordWordMismatchFaultFault", Name="WordMismatchFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplayerWordscrambleJS")]
         bool GuessWord(string playerName, MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word gameWords);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/GuessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/GuessWordResponse")]
@@ -185,12 +524,12 @@ namespace MultiplayerWordscrambleClientJS.WordScrambleMPClient {
             return base.Channel.IsGameBeingHostedAsync();
         }
         
-        public string HostGame(string playerName, string hostAddress, string wordToScramble) {
-            return base.Channel.HostGame(playerName, hostAddress, wordToScramble);
+        public string HostGame(string playerName, string wordToScramble) {
+            return base.Channel.HostGame(playerName, wordToScramble);
         }
         
-        public System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string hostAddress, string wordToScramble) {
-            return base.Channel.HostGameAsync(playerName, hostAddress, wordToScramble);
+        public System.Threading.Tasks.Task<string> HostGameAsync(string playerName, string wordToScramble) {
+            return base.Channel.HostGameAsync(playerName, wordToScramble);
         }
         
         public MultiplayerWordscrambleClientJS.WordScrambleMPClient.Word Join(string playerName) {

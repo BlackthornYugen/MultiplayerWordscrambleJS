@@ -19,14 +19,18 @@ namespace MultiplayerWordscrambleJS
 		// Exception: game is already being hosted by someone else
         [FaultContract(typeof(GameBeingHostedFault))]
 		[OperationContract]
-        string HostGame(string playerName, string hostAddress, string wordToScramble);
+        string HostGame(string playerName, string wordToScramble);
 
 		// Player ‘playerName’ tries to join the game
-		// The function returns a Word object containing the host’s (un)scrambled words
-		// Exception: maximum number of players reached
+        // The function returns a Word object containing the host’s (un)scrambled words
+        // Exception: maximum number of players reached
         [FaultContract(typeof(MaximumNumberOfPlayersReachedFault))]
-		// Exception: host cannot join the game
-		// Exception: nobody is hosting the game
+        // Exception: maximum number of players reached
+        [FaultContract(typeof(PlayerAlreadyInGameFault))]
+        // Exception: host cannot join the game
+        [FaultContract(typeof(HostCannotJoinTheGameFault))] // TODO: Figure out when this happends
+        // Exception: nobody is hosting the game
+        [FaultContract(typeof(GameIsNotBeingHostedFault))]
 		[OperationContract]
 		Word Join(string playerName);
 
@@ -34,6 +38,9 @@ namespace MultiplayerWordscrambleJS
 		// Returns true if ‘guessedWord’ is identical to ‘unscrambledWord’ or false otherwise
 		// The function returns the name of the person hosting the game 
 		// Exception: user is not playing the game 
+        [FaultContract(typeof(PlayerNotPlayingTheGameFault))]
+        // Exception: scrambled word on client doesn't match server
+        [FaultContract(typeof(WordMismatchFault))]
 		[OperationContract]
 		bool GuessWord(string playerName, Word gameWords);
 	}
@@ -48,19 +55,15 @@ namespace MultiplayerWordscrambleJS
 	}
 
     [DataContract]
-    public abstract class GameFault
-    {
-        public string Message { get; protected set; }
-    }
-
-    [DataContract]
-    public class GameBeingHostedFault : GameFault
+    public class GameBeingHostedFault
     {
         string _message = "There is already a game being hosted by {0}.";
 
+        [DataMember]
         public string HostPlayer { get; set; }
 
-        public new string Message
+        [DataMember]
+        public string Message
         {
             get
             {
@@ -74,18 +77,21 @@ namespace MultiplayerWordscrambleJS
     }
 
     [DataContract]
-    public class MaximumNumberOfPlayersReachedFault : GameFault
+    public class MaximumNumberOfPlayersReachedFault
     {
         string _message = "You cannot join the game because the capacity of {0} was reached.";
-        int capacity;
+        int _capacity;
 
+        [DataMember]
         public int Capacity
         {
-            get { return capacity; }
-            set { capacity = value; }
+            get { return _capacity; }
+            set { _capacity = value; }
         }
 
-        public new string Message { 
+        [DataMember]
+        public string Message
+        { 
             get 
             {
                 return string.Format(_message, Capacity);
@@ -98,40 +104,54 @@ namespace MultiplayerWordscrambleJS
     }
 
     [DataContract]
-    public class HostCannotJoinTheGameFault : GameFault
+    public class PlayerAlreadyInGameFault
     {
-        public HostCannotJoinTheGameFault()
-        {
-            Message = "The server lists you as the host. You may not join a game that you are hosting.";
-        }
+        [DataMember]
+        public string Message = "The player has already joined that game.";
     }
 
     [DataContract]
-    public class GameIsNotBeingHostedFault : GameFault
+    public class HostCannotJoinTheGameFault
     {
-        public GameIsNotBeingHostedFault()
-        {
-            Message = "The server is not currently hosting a game.";
-        }
+        [DataMember]
+        public string Message = "The server lists you as the host. You may not join a game that you are hosting.";
     }
 
     [DataContract]
-    public class PlayerNotPlayingTheGameFault : GameFault
+    public class GameIsNotBeingHostedFault
     {
-        public PlayerNotPlayingTheGameFault()
-        {
-            Message = "The active game does not list you as a partisipant.";
-        }
+        [DataMember]
+        public string Message = "The server is not currently hosting a game.";
+    }
+
+    [DataContract]
+    public class PlayerNotPlayingTheGameFault
+    {
+        [DataMember]
+        public string Message = "The active game does not list you as a partisipant.";
     }
 
 
 
     [DataContract]
-    public class WordMismatchFault : GameFault
+    public class WordMismatchFault
     {
-        public WordMismatchFault()
+        private string _message = "The client gave the scrambled word \"{0}\" but the server has it as \"{1}\".";
+
+        [DataMember]
+        public string Message
         {
-            Message = "The active game does not list you as a partisipant.";
+            get
+            {
+                return String.Format(_message, ClientScrambled, ServerScrambled);
+            }
+            protected set { _message = value; }
         }
+
+        [DataMember]
+        public string ClientScrambled;
+
+        [DataMember]
+        public string ServerScrambled;
     }
 }

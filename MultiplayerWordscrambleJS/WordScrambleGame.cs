@@ -26,15 +26,13 @@ namespace MultiplayerWordscrambleJS
         }
 
         [OperationBehavior]
-        public string HostGame(string playerName, string hostAddress, string wordToScramble)
+        public string HostGame(string playerName, string wordToScramble)
         {
             if (IsGameBeingHosted())
             {
                 throw new FaultException<GameBeingHostedFault>(
                     new GameBeingHostedFault { HostPlayer = _userHostingTheGame });
             }
-
-            // TODO: use host address maybe? 
 
             _userHostingTheGame = playerName;
             _gameWords = new Word { UnscrambledWord = wordToScramble.Trim(), ScrambledWord = ScrambleWord(wordToScramble) };
@@ -52,8 +50,8 @@ namespace MultiplayerWordscrambleJS
 
             if (_activePlayers.Contains(playerName))
             {
-                throw new FaultException<PlayerNotPlayingTheGameFault>(
-                    new PlayerNotPlayingTheGameFault());
+                throw new FaultException<PlayerAlreadyInGameFault>(
+                    new PlayerAlreadyInGameFault());
             }
 
             if (_userHostingTheGame == playerName)
@@ -61,6 +59,13 @@ namespace MultiplayerWordscrambleJS
                 throw new FaultException<HostCannotJoinTheGameFault>(
                     new HostCannotJoinTheGameFault());
             }
+
+            if (!IsGameBeingHosted())
+            {
+                throw new FaultException<GameIsNotBeingHostedFault>(new GameIsNotBeingHostedFault());
+            }
+
+            _activePlayers.Add(playerName);
 
             return new Word { ScrambledWord = _gameWords.ScrambledWord };
         }
@@ -70,24 +75,25 @@ namespace MultiplayerWordscrambleJS
         {
             bool victorious = false;
 
-            if (IsGameBeingHosted())
+            if (!IsGameBeingHosted())
             {
                 throw new FaultException<GameIsNotBeingHostedFault>(new GameIsNotBeingHostedFault());
             }
 
             if (gameWords.ScrambledWord != _gameWords.ScrambledWord)
             {
-                throw new FaultException<WordMismatchFault>(new WordMismatchFault());
-            }
-
-            if (gameWords.UnscrambledWord == _gameWords.UnscrambledWord)
-            {
-                victorious = true;
+                throw new FaultException<WordMismatchFault>(new WordMismatchFault { ClientScrambled = gameWords.ScrambledWord, ServerScrambled = _gameWords.ScrambledWord });
             }
 
             if (!_activePlayers.Contains(playerName))
             {
                 throw new FaultException<PlayerNotPlayingTheGameFault>(new PlayerNotPlayingTheGameFault());
+            }
+
+            if (gameWords.UnscrambledWord == _gameWords.UnscrambledWord)
+            {
+                victorious = true;
+                _activePlayers.Remove(playerName); // This player got it so they are removed from the game.
             }
 
             return victorious;
